@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Kiểm tra chỉ số BMI của bạn</h1>
+    <p>Nhập chiều cao của bạn</p>
+    <input type="text" value="" id="chieu-cao">
+    <p>Nhập cân nặng của bạn</p>
+    <input type="text" value="" id="can-nang">
+    <br>
+    <br>
+    <button onclick="demoBMI()">tính BMI</button>
+    <p>Chỉ số BMI của bạn</p>
+    <input type="text" value="" id="bmi">
+    <p>Kết luận</p>
+    <input type="text" value="" id="ket-luan">
+
+
+    <!-- 
+        nếu muốn ấn 1 nút cần trỏ đến 1 thẻ nào đó để thay đổi nội dung thì ta cần làm theo những bước sau:
+        b1 : trên thẻ tạo nút bấm thì ta thêm hàm onclick="1 biến có tên nào đấy()".
+        b2 : tạo 1 function gọi tên biến vừa tạo ở hàm onclick.
+        b3 : gọi hàm document.getElementById('id: của thẻ muốn trỏ đến'); muốn thêm gì nữa thì nhìn ví dụ bên dưới.
+        
+     -->
+</body>
+
+<script>
+    function demoBMI() { // đặt 1 hàm function ccos tên là demoBMI
+        let height = document.getElementById('chieu-cao');  // tạo 1 biến height gán cho thẻ có id = chieu-cao
+        let weight = document.getElementById('can-nang');  // tạo 1 biến weight gán cho thẻ có id=can-nang
+
+        let bmi = weight.value / (height.value * height.value);
+        document.getElementById('bmi').value = bmi.toFixed(2);  // in ra kết quả chỉ số bmi vừa được tính trên (tofixed(điền bao nhiêu số cần lấy sau dấu phẩy):lấy bao nhiêu số đằng sau dấu phẩy)
+        document.getElementById('bmi').style.background = 'red';  // in ra kết quả chỉ số bmi vừa được tính trên (tofixed(điền bao nhiêu số cần lấy sau dấu phẩy):lấy bao nhiêu số đằng sau dấu phẩy)
+
+        let conclude = '';  // conclude: có nghĩa là kết luận
+        if(bmi < 18.5) {
+            conclude = 'gầy';
+        }else if(18.5 <= bmi && bmi < 25) {
+            conclude = 'cân đối';
+        }else {
+            conclude = 'béo phì';
+        }
+           document.getElementById('ket-luan').value = conclude; // sau khi đặt điều kiện xong thì gọi hàm trỏ đến thẻ có id được gọi
+    }
+    
+</script>
+
+
+</html>
